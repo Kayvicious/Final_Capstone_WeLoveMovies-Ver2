@@ -23,7 +23,8 @@ async function destroy(request, response) {
 
 async function list(request, response) {
   // TODO: Write your code here
-  const data = await service.list();
+  const { movieId } = request.params;
+  const data = await service.list(movieId);
   response.json({ data });
 }
 
@@ -48,8 +49,6 @@ async function update(request, response) {
     ...request.body.data,
     review_id: response.locals.review.review_id,
   }
-
-  console.log(updatedReview)
 
   const data = await service.update(updatedReview);
   response.json({ data });
