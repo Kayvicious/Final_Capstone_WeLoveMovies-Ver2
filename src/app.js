@@ -20,7 +20,7 @@ app.use('/reviews', reviewsRouter )
 app.use(notFound);
 app.use(errorHandler);
 
-const { PORT = 10000 } = process.env;
+const { PORT = 5001 } = process.env;
 
 const knex = require("./db/connection");
 
