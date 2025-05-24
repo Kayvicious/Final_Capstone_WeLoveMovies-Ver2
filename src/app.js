@@ -20,4 +20,19 @@ app.use('/reviews', reviewsRouter )
 app.use(notFound);
 app.use(errorHandler);
 
+const { PORT = 10000 } = process.env;
+
+const app = require("./app");
+const knex = require("./db/connection");
+
+const listener = () => console.log(`Listening on Port ${PORT}!`);
+
+knex.migrate
+  .latest()
+  .then((migrations) => {
+    console.log("migrations", migrations);
+    app.listen(PORT, listener);
+  })
+  .catch(console.error);
+
 module.exports = app;
