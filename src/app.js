@@ -22,7 +22,6 @@ app.use(errorHandler);
 
 const { PORT = 10000 } = process.env;
 
-const app = require("./app");
 const knex = require("./db/connection");
 
 const listener = () => console.log(`Listening on Port ${PORT}!`);
